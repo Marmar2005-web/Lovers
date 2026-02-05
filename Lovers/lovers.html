@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Pretty Panda 🐼💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== COMMON STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', 'Georgia', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f9c5d1 0%, #f8b7c7 25%, #f7a9bd 50%, #ff91ba 100%);
+        }
+
+        .page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            animation: pageFadeIn 1s ease-out forwards;
+        }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* ===== PAGE 1: PINK THEME ===== */
+        #page1 {
+            background: linear-gradient(135deg, #f9c5d1 0%, #f8b7c7 25%, #f7a9bd 50%, #ff91ba 100%);
+            padding: 20px;
+        }
+
+        /* Falling Hearts Animation */
+        .falling-heart {
+            position: fixed;
+            font-size: 20px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: heartFall linear forwards;
+        }
+
+        @keyframes heartFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header with Entrance Animation */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.4);
+            border: 3px solid #ff91ba;
+            animation: headerEntrance 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes headerEntrance {
+            0% {
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+            80% {
+                transform: translateY(10px) scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            color: #ff69b4;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0 #ffe4ec;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 3px 3px 0 #ffe4ec; }
+            100% { text-shadow: 3px 3px 15px rgba(255, 105, 180, 0.5); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ff1493;
+            font-style: italic;
+            margin-bottom: 30px;
+            animation: subtitleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFloat {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-10px); opacity: 0.8; }
+        }
+
+        /* ===== IMPROVED CIRCULAR BOUQUET LAYOUT FOR 15 IMAGES ===== */
+        .bouquet-container {
+            position: relative;
+            width: 700px;
+            height: 700px;
+            margin: 0 auto 50px;
+            animation: bouquetFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes bouquetFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-1deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        @media (max-width: 768px) {
+            .bouquet-container {
+                width: 90vw;
+                height: 90vw;
+                max-width: 500px;
+                max-height: 500px;
+            }
+        }
+
+        /* Circular arrangement for 15 flowers */
+        .bouquet-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Individual Flower Photos - 15 in circular arrangement */
+        .bouquet-flower {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50% 50% 50% 0;
+            transform-origin: center;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 4px solid white;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: flowerBloom 1.5s ease-out backwards;
+            background: linear-gradient(45deg, #ffb6c1, #ff91ba);
+            z-index: 2;
+        }
+
+        @keyframes flowerBloom {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            70% { transform: scale(1.1) rotate(-10deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Position 15 flowers in a circle */
+        .bouquet-flower:nth-child(1) { top: 10%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0.1s; }
+        .bouquet-flower:nth-child(2) { top: 20%; left: 70%; transform: translate(-50%, -50%); animation-delay: 0.2s; }
+        .bouquet-flower:nth-child(3) { top: 35%; left: 85%; transform: translate(-50%, -50%); animation-delay: 0.3s; }
+        .bouquet-flower:nth-child(4) { top: 50%; left: 90%; transform: translate(-50%, -50%); animation-delay: 0.4s; }
+        .bouquet-flower:nth-child(5) { top: 65%; left: 85%; transform: translate(-50%, -50%); animation-delay: 0.5s; }
+        .bouquet-flower:nth-child(6) { top: 75%; left: 70%; transform: translate(-50%, -50%); animation-delay: 0.6s; }
+        .bouquet-flower:nth-child(7) { top: 80%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0.7s; }
+        .bouquet-flower:nth-child(8) { top: 75%; left: 30%; transform: translate(-50%, -50%); animation-delay: 0.8s; }
+        .bouquet-flower:nth-child(9) { top: 65%; left: 15%; transform: translate(-50%, -50%); animation-delay: 0.9s; }
+        .bouquet-flower:nth-child(10) { top: 50%; left: 10%; transform: translate(-50%, -50%); animation-delay: 1.0s; }
+        .bouquet-flower:nth-child(11) { top: 35%; left: 15%; transform: translate(-50%, -50%); animation-delay: 1.1s; }
+        .bouquet-flower:nth-child(12) { top: 20%; left: 30%; transform: translate(-50%, -50%); animation-delay: 1.2s; }
+        .bouquet-flower:nth-child(13) { top: 30%; left: 50%; transform: translate(-50%, -50%); animation-delay: 1.3s; }
+        .bouquet-flower:nth-child(14) { top: 50%; left: 65%; transform: translate(-50%, -50%); animation-delay: 1.4s; }
+        .bouquet-flower:nth-child(15) { top: 50%; left: 35%; transform: translate(-50%, -50%); animation-delay: 1.5s; }
+
+        /* Hover Effects */
+        .bouquet-flower:hover {
+            transform: translate(-50%, -50%) scale(1.4) rotate(0deg);
+            z-index: 50;
+            box-shadow: 0 25px 50px rgba(255, 105, 180, 0.6);
+            border-color: #ffd700;
+            animation: flowerHover 0.8s ease-out;
+        }
+
+        @keyframes flowerHover {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2) rotate(10deg); }
+            100% { transform: translate(-50%, -50%) scale(1.4) rotate(0deg); }
+        }
+
+        .bouquet-flower img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .bouquet-flower:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Improved Fallback Content */
+        .bouquet-flower .fallback-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff91ba, #ff69b4);
+            color: white;
+            font-size: 2.5rem;
+            border-radius: inherit;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .bouquet-flower img.error + .fallback-content {
+            display: flex;
+            animation: fallbackPulse 2s infinite;
+        }
+
+        @keyframes fallbackPulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .flower-number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 105, 180, 0.95);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: numberFloat 3s infinite alternate;
+            z-index: 3;
+        }
+
+        @keyframes numberFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        /* Center Heart Message */
+        .center-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(255, 105, 180, 0.4);
+            border: 6px solid #ff69b4;
+            z-index: 10;
+            animation: heartBeat 1.5s infinite, centerSpin 20s linear infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-50%, -50%) scale(1.05); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            75% { transform: translate(-50%, -50%) scale(1.08); }
+        }
+
+        @keyframes centerSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .center-heart i {
+            font-size: 55px;
+            color: #ff1493;
+            margin-bottom: 15px;
+            animation: heartPulse 1.2s infinite;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Proposal Text Sections */
+        .proposal-text-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 45px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+            border: 4px solid #ff91ba;
+            text-align: center;
+            animation: sectionSlide 1.2s ease-out;
+        }
+
+        @keyframes sectionSlide {
+            0% { transform: translateX(100px) rotate(5deg); opacity: 0; }
+            100% { transform: translateX(0) rotate(0deg); opacity: 1; }
+        }
+
+        .proposal-text {
+            font-size: 2.1rem;
+            color: #ff1493;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-shadow: 2px 2px 0 #ffe4ec;
+            animation: textSparkle 4s infinite alternate;
+        }
+
+        @keyframes textSparkle {
+            0% { text-shadow: 2px 2px 0 #ffe4ec, 0 0 0 rgba(255, 20, 147, 0); }
+            100% { text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.3), 0 0 20px rgba(255, 20, 147, 0.2); }
+        }
+
+        .bisaya-text {
+            font-size: 2.4rem;
+            color: #ff69b4;
+            font-weight: bold;
+            margin: 35px 0;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 145, 186, 0.4));
+            border-radius: 25px;
+            border: 5px dashed #ff69b4;
+            animation: bisayaDance 5s ease-in-out infinite;
+        }
+
+        @keyframes bisayaDance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-1deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        /* Buttons Section */
+        .buttons-section {
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+            position: relative;
+            animation: buttonsEntrance 1.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes buttonsEntrance {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            80% { transform: scale(1.1) rotate(-5deg); opacity: 0.9; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .proposal-btn {
+            padding: 28px 65px;
+            font-size: 2.3rem;
+            border: none;
+            border-radius: 70px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .proposal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .proposal-btn:hover::before {
+            left: 100%;
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #4CAF50, #66BB6A, #81C784, #A5D6A7);
+            color: white;
+            border: 6px solid #A5D6A7;
+            animation: yesGlow 2.5s infinite alternate, yesFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes yesGlow {
+            0% { box-shadow: 0 25px 50px rgba(76, 175, 80, 0.4); }
+            100% { box-shadow: 0 25px 70px rgba(76, 175, 80, 0.7), 0 0 30px rgba(76, 175, 80, 0.5); }
+        }
+
+        @keyframes yesFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(-2deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-20px) scale(1.15) rotate(5deg);
+            background: linear-gradient(45deg, #66BB6A, #81C784, #A5D6A7, #C8E6C9);
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #FF5252, #FF8A80, #FFCDD2);
+            color: white;
+            border: 6px solid #FFCDD2;
+            animation: noFloat 5s ease-in-out infinite 0.5s, noGlow 3s infinite alternate;
+        }
+
+        @keyframes noGlow {
+            0% { box-shadow: 0 25px 50px rgba(255, 82, 82, 0.4); }
+            100% { box-shadow: 0 25px 70px rgba(255, 82, 82, 0.7), 0 0 30px rgba(255, 82, 82, 0.5); }
+        }
+
+        @keyframes noFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(2deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-12px) rotate(-2deg); }
+        }
+
+        .no-btn:hover {
+            transform: translateY(-15px) scale(1.1);
+            box-shadow: 0 35px 60px rgba(255, 82, 82, 0.5);
+        }
+
+        /* Response Area */
+        .response-area {
+            min-height: 120px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .yes-response {
+            font-size: 2.7rem;
+            color: #4CAF50;
+            font-weight: bold;
+            text-align: center;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(76, 175, 80, 0.4);
+            border: 7px solid #66BB6A;
+            animation: celebrationPop 1.5s ease-out, celebrationFloat 4s ease-in-out infinite, celebrationColor 3s infinite alternate;
+        }
+
+        @keyframes celebrationPop {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            70% { transform: scale(1.15) rotate(-10deg); opacity: 0.9; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes celebrationFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes celebrationColor {
+            0% { color: #4CAF50; }
+            100% { color: #66BB6A; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 35px;
+            color: #ff69b4;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            border: 4px solid #ff91ba;
+            margin-top: 50px;
+            animation: footerRise 1.5s ease-out;
+        }
+
+        @keyframes footerRise {
+            0% { transform: translateY(150px) scale(0.8); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        /* ===== PAGE 2: RED THEME GALLERY ===== */
+        #page2 {
+            background: linear-gradient(135deg, #8b0000 0%, #b22222 25%, #dc143c 50%, #ff6b6b 75%, #ffb6c1 100%);
+            padding: 25px;
+        }
+
+        /* Red Theme Falling Hearts */
+        .red-heart {
+            position: fixed;
+            font-size: 26px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: redHeartFall linear forwards, redHeartFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes redHeartFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(150px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes redHeartFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 35px;
+            left: 35px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: #b22222;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: backButtonEntrance 1.5s ease-out, backButtonFloat 4s ease-in-out infinite;
+            border: 3px solid #ff6b6b;
+        }
+
+        @keyframes backButtonEntrance {
+            0% { transform: translateX(-150px) rotate(-180deg); opacity: 0; }
+            80% { transform: translateX(10px) rotate(10deg); opacity: 0.9; }
+            100% { transform: translateX(0) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes backButtonFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-8deg); }
+        }
+
+        .back-button:hover {
+            transform: scale(1.15) rotate(-15deg) translateY(-5px);
+            background: white;
+            box-shadow: 0 15px 35px rgba(178, 34, 34, 0.5);
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+            text-align: center;
+            padding: 90px 25px 50px;
+            color: white;
+            max-width: 850px;
+            margin: 0 auto;
+            animation: welcomeEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes welcomeEntrance {
+            0% { transform: translateY(-80px) scale(0.9); opacity: 0; }
+            80% { transform: translateY(10px) scale(1.05); opacity: 0.9; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .welcome-title {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            text-shadow: 4px 4px 0 rgba(139, 0, 0, 0.6);
+            animation: welcomeTitlePulse 2.5s infinite alternate, titleShine 3s infinite;
+        }
+
+        @keyframes welcomeTitlePulse {
+            0% { transform: scale(1); text-shadow: 4px 4px 0 rgba(139, 0, 0, 0.6); }
+            100% { transform: scale(1.05); text-shadow: 4px 4px 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .celebration-text {
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin: 35px 0;
+            padding: 25px;
+            background: rgba(178, 34, 34, 0.4);
+            border-radius: 20px;
+            border: 4px solid #ffd700;
+            animation: celebrationTextGlow 2s infinite alternate, celebrationBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes celebrationTextGlow {
+            0% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 10px 50px rgba(255, 215, 0, 0.7); }
+        }
+
+        @keyframes celebrationBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .thankyou-message {
+            font-size: 1.9rem;
+            color: #ffcccc;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            animation: messageFadeIn 2s ease-out;
+        }
+
+        @keyframes messageFadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 3x3 Grid Gallery */
+        .gallery-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            animation: galleryEntrance 1.8s ease-out;
+        }
+
+        @keyframes galleryEntrance {
+            0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+            80% { transform: scale(1.05) rotate(5deg); opacity: 0.9; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 25px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 5px solid white;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: galleryItemPop 1s ease-out backwards;
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #8b0000, #b22222);
+        }
+
+        @keyframes galleryItemPop {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            70% { transform: scale(1.1) rotate(10deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
+        .gallery-item:nth-child(9) { animation-delay: 0.9s; }
+
+        .gallery-item:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(139, 0, 0, 0.6);
+            z-index: 20;
+            border-color: #ffd700;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Fallback for gallery images */
+        .gallery-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #b22222, #ff6b6b);
+            color: white;
+            font-size: 3.5rem;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .gallery-item img.error + .gallery-fallback {
+            display: flex;
+            animation: galleryFallbackPulse 2.5s infinite;
+        }
+
+        @keyframes galleryFallbackPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .gallery-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #b22222;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            animation: galleryNumberFloat 3s infinite alternate;
+            z-index: 3;
+        }
+
+        @keyframes galleryNumberFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-8px) rotate(15deg); }
+        }
+
+        /* Heart Message Modal */
+        .heart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; backdrop-filter: blur(0px); }
+            to { opacity: 1; backdrop-filter: blur(10px); }
+        }
+
+        .heart-modal-content {
+            position: relative;
+            width: 92%;
+            max-width: 850px;
+            background: white;
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+            animation: modalScaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), modalFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes modalScaleIn {
+            from { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+            to { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes modalFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .heart-message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            background: linear-gradient(45deg, #8b0000, #b22222, #dc143c);
+            position: relative;
+            min-height: 550px;
+        }
+
+        .heart-message-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 7px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 35px;
+            animation: messageImgFloat 5s ease-in-out infinite, messageImgRotate 20s linear infinite;
+        }
+
+        @keyframes messageImgFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes messageImgRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .heart-message-text {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 650px;
+            border: 5px solid #ffd700;
+            animation: messageTextEntrance 0.7s ease-out;
+        }
+
+        @keyframes messageTextEntrance {
+            0% { transform: translateY(80px) scale(0.8); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .heart-message-title {
+            font-size: 2.4rem;
+            color: #8b0000;
+            margin-bottom: 25px;
+            animation: titleColorShift 3.5s infinite alternate, titleSparkle 4s infinite;
+        }
+
+        @keyframes titleColorShift {
+            0% { color: #8b0000; }
+            50% { color: #dc143c; }
+            100% { color: #ff6b6b; }
+        }
+
+        @keyframes titleSparkle {
+            0%, 100% { text-shadow: 0 0 0 rgba(139, 0, 0, 0); }
+            50% { text-shadow: 0 0 20px rgba(255, 107, 107, 0.7); }
+        }
+
+        .heart-message-content {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 25px;
+            animation: contentFadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes contentFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .heart-message-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #b22222, #dc143c);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            animation: messageNumberSpin 4s infinite linear, messageNumberPulse 2s infinite alternate;
+        }
+
+        @keyframes messageNumberSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes messageNumberPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .close-heart-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: #b22222;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            animation: closeButtonFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes closeButtonFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(180deg); }
+        }
+
+        .close-heart-modal:hover {
+            transform: scale(1.2) rotate(90deg);
+            background: white;
+            box-shadow: 0 10px 30px rgba(178, 34, 34, 0.5);
+        }
+
+        /* Final Message */
+        .final-message {
+            text-align: center;
+            padding: 60px 25px;
+            color: white;
+            font-size: 2rem;
+            margin-top: 60px;
+            animation: finalMessageEntrance 2.5s ease-out;
+        }
+
+        @keyframes finalMessageEntrance {
+            0% { opacity: 0; transform: translateY(80px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .panda-signature {
+            font-size: 2.3rem;
+            color: #ffd700;
+            margin-top: 25px;
+            animation: signatureGlow 2.5s infinite alternate, signatureFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes signatureGlow {
+            0% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); }
+            100% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 50px rgba(255, 215, 0, 0.5); }
+        }
+
+        @keyframes signatureFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title, .welcome-title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .bouquet-container {
+                width: 95vw;
+                height: 95vw;
+                max-width: 450px;
+                max-height: 450px;
+            }
+            
+            .bouquet-flower {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .center-heart {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .proposal-text, .celebration-text {
+                font-size: 1.8rem;
+            }
+            
+            .bisaya-text {
+                font-size: 2rem;
+                padding: 25px;
+            }
+            
+            .buttons-section {
+                gap: 40px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .proposal-btn {
+                padding: 22px 45px;
+                font-size: 2rem;
+                min-width: 240px;
+            }
+            
+            .gallery-grid {
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                border-width: 3px;
+            }
+            
+            .heart-message-container {
+                padding: 30px;
+            }
+            
+            .heart-message-img {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .heart-message-text {
+                padding: 25px;
+            }
+            
+            .heart-message-title {
+                font-size: 2rem;
+            }
+            
+            .heart-message-content {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title, .welcome-title {
+                font-size: 2.2rem;
+            }
+            
+            .bouquet-flower {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .center-heart {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .center-heart i {
+                font-size: 40px;
+            }
+            
+            .proposal-text {
+                font-size: 1.5rem;
+            }
+            
+            .bisaya-text {
+                font-size: 1.7rem;
+            }
+            
+            .proposal-btn {
+                padding: 18px 35px;
+                font-size: 1.7rem;
+                min-width: 200px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(5, auto);
+                gap: 12px;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== PAGE 1: PROPOSAL (PINK THEME) ===== -->
+    <div id="page1" class="page active">
+        <!-- Falling Hearts Container -->
+        <div id="fallingHearts"></div>
+        
+        <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="main-title">To My Pretty Panda 🐼💖</h1>
+                <p class="subtitle">Every moment with you is a memory I cherish forever</p>
+            </div>
+
+            <!-- Circular Bouquet Layout with 15 Images -->
+            <div class="bouquet-container">
+                <div class="bouquet-circle">
+                    <!-- 15 Flower Photos in Circular Arrangement -->
+                    <div class="bouquet-flower">
+                        <img src="assets/images/1.jpg" alt="Memory 1" onerror="this.classList.add('error')">
+                        <div class="fallback-content">💖</div>
+                        <div class="flower-number">1</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/2.jpg" alt="Memory 2" onerror="this.classList.add('error')">
+                        <div class="fallback-content">😊</div>
+                        <div class="flower-number">2</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/3.jpg" alt="Memory 3" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌅</div>
+                        <div class="flower-number">3</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/4.jpg" alt="Memory 4" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🎉</div>
+                        <div class="flower-number">4</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/5.jpg" alt="Memory 5" onerror="this.classList.add('error')">
+                        <div class="fallback-content">☕</div>
+                        <div class="flower-number">5</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/6.jpg" alt="Memory 6" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌟</div>
+                        <div class="flower-number">6</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/7.jpg" alt="Memory 7" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🎁</div>
+                        <div class="flower-number">7</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/8.jpg" alt="Memory 8" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌸</div>
+                        <div class="flower-number">8</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/9.jpg" alt="Memory 9" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌺</div>
+                        <div class="flower-number">9</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/10.jpg" alt="Memory 10" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌷</div>
+                        <div class="flower-number">10</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/11.jpg" alt="Memory 11" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌹</div>
+                        <div class="flower-number">11</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/12.jpg" alt="Memory 12" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌼</div>
+                        <div class="flower-number">12</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/13.jpg" alt="Memory 13" onerror="this.classList.add('error')">
+                        <div class="fallback-content">💐</div>
+                        <div class="flower-number">13</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/14.jpg" alt="Memory 14" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🌻</div>
+                        <div class="flower-number">14</div>
+                    </div>
+                    
+                    <div class="bouquet-flower">
+                        <img src="assets/images/15.jpg" alt="Memory 15" onerror="this.classList.add('error')">
+                        <div class="fallback-content">🎈</div>
+                        <div class="flower-number">15</div>
+                    </div>
+                    
+                    <!-- Center Heart Message -->
+                    <div class="center-heart">
+                        <i class="fas fa-heart"></i>
+                        <span style="font-size: 1.6rem; color: #ff1493; font-weight: bold;">Our<br>Love<br>Story</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Beautiful Memories Text -->
+            <div class="proposal-text-section">
+                <h2 style="color: #ff69b4; font-size: 2.7rem; margin-bottom: 35px; animation: sectionTitleFloat 6s ease-in-out infinite;">
+                    <i class="fas fa-star"></i> 15 Beautiful Memories <i class="fas fa-star"></i>
+                </h2>
+                <p class="proposal-text">
+                    "Each memory with you is like a beautiful flower in my bouquet of love. You make every moment magical, my pretty panda."
+                </p>
+            </div>
+
+            <!-- Bisaya Proposal -->
+            <div class="proposal-text-section">
+                <div class="bisaya-text">
+                    "Pwede Tika ma uban sa adlaw sa mga Lovers?"
+                </div>
+                
+                <p class="proposal-text" style="margin-top: 35px;">
+                    Will you be my Valentine Panda?
+                </p>
+            </div>
+
+            <!-- Separated Buttons -->
+            <div class="buttons-section">
+                <button class="proposal-btn yes-btn" id="yesBtn">
+                    <i class="fas fa-heart"></i> YES! <i class="fas fa-heart"></i>
+                </button>
+                
+                <button class="proposal-btn no-btn" id="noBtn">
+                    No
+                </button>
+            </div>
+
+            <!-- Response Area -->
+            <div class="response-area">
+                <div class="yes-response" id="yesResponse" style="display: none;">
+                    Yes! Yehey! Ning-sugot na siya🐼💖
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                Made with <i class="fas fa-heart" style="color:#ff1493; animation: heartBeat 1.5s infinite;"></i> for Rhaiza Mhea M. Villegas 
+                <br><span style="color: #ff1493; animation: colorShift 3s infinite alternate;">My one and only pretty panda 🐼💖</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE 2: GALLERY (RED THEME) ===== -->
+    <div id="page2" class="page">
+        <!-- Red Theme Hearts Container -->
+        <div id="redHearts"></div>
+
+        <!-- Back Button -->
+        <a href="javascript:void(0)" class="back-button" id="backBtn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <!-- Welcome Message -->
+        <div class="welcome-message">
+            <h1 class="welcome-title">That's My Liy!💖</h1>
+            
+            <div class="celebration-text">
+                Yehey ana bitaw ko! Dika mo tanggi hehe!😊💕
+            </div>
+            
+            <p class="thankyou-message">
+                "Let’s keep riding this journey together  
+                 Trust the process v We keep going
+                 Slowly but Surely.🐼💖
+            </p>
+            
+            <p class="thankyou-message" style="font-size: 1.8rem; color: #ffd700;">
+                Click each box to see our special memories and messages!
+            </p>
+        </div>
+
+        <!-- 3x3 Grid Gallery -->
+        <div class="gallery-container">
+            <div class="gallery-grid" id="heartGallery">
+                <!-- 9 Gallery items will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Heart Message Modal -->
+        <div class="heart-modal" id="heartModal">
+            <div class="heart-modal-content">
+                <button class="close-heart-modal" id="closeHeartModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="heart-message-container">
+                    <img class="heart-message-img" id="heartModalImage" src="" alt="">
+                    <div class="heart-message-text">
+                        <div class="heart-message-number" id="heartModalNumber">1</div>
+                        <h2 class="heart-message-title" id="heartModalTitle">Memory Title</h2>
+                        <p class="heart-message-content" id="heartModalContent">Message will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message">
+            <p>"From this day forward, every moment will be ours to share.<br>
+            Thank you for saying YES, my pretty panda!🐼💖"</p>
+            
+            <div class="panda-signature">
+                <i class="fas fa-heart"></i> Forever Yours <i class="fas fa-heart"></i><br>
+                Happy Valentine's Day Liy!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        const imageData = [
+            {
+                src: "assets/images/1.jpg",
+                title: "Unitop Lovers",
+                message: "Every moment and every ordinary day is not just a day. it's always special because I have you, the prettiest panda I've found on this planet Earth.",
+                number: "1"
+            },
+            {
+                src: "assets/images/14.jpg",
+                title: "First Picture with my Panda",
+                message: "These days, I feel so comfortable with you because you made my heart feel again. You showed me the beauty of your heart—not on the outside, but deep within. You are genuinely kind and beautiful, and I cherish that so much.",
+                number: "2"
+            },
+            {
+                src: "assets/images/3.jpg",
+                title: "Research Defense",
+                message: "This day was for preparing the research we worked hard on. Because of our groupings, we talked and worked together for the first time. We started as groupmates, and somehow, we ended up becoming something more at this present moment hehehe.",
+                number: "3"
+            },
+            {
+                src: "assets/images/21.jpg",
+                title: "Special Events",
+                message: "Performing with each group dita kaabot ani pero sayang ikaw unta akong isayaw sa stage. But its alright, because I watched you from a far. My eyes were only on you.",
+                number: "4"
+            },
+            {
+                src: "assets/images/18.jpg",
+                title: "The best moment of the Sunset",
+                message: "This was the best moment I’ve ever had. We captured the beauty of the sunset together, and you made it even more special. As the sun went down, I felt that what we have will never fade. All the sweet moments we shared that day made me truly happy and genuine. That picture is perfect for us.",
+                number: "5"
+            },
+            {
+                src: "assets/images/22.jpg",
+                title: "With your Smile",
+                message: "After we performed, we took pictures to keep as memories proof that we shared moments worth remembering. Every moment we had together was captured, and I treasure all of that one.",
+                number: "6"
+            },
+            {
+                src: "assets/images/10.jpg",
+                title: "With my Panda Ofc",
+                message: "Taking pictures after class, it’s always with u . I always want my photos to be with you, my partner in crime and I really love this picture also.",
+                number: "7"
+            },
+            {
+                src: "assets/images/24.jpg",
+                title: "US",
+                message: "Making unforgettable moments with my panda. Because I know, and you know, that we protect and treasure this kind of relationship.",
+                number: "8"
+            },
+            {
+                src: "assets/images/8.jpg",
+                title: "HOME",
+                message: "With you, I found where I truly belong. Being with you feels like my strongest foundation. Whenever I’m with you, my sadness fades away, because your smile alone is enough to make me happy.",
+                number: "9"
+            }
+        ];
+
+        // ===== PAGE 1 FUNCTIONS =====
+        
+        // Create falling hearts for page 1
+        function createFallingHearts() {
+            const container = document.getElementById('fallingHearts');
+            const heartCount = 50;
+            const heartColors = ['#ff91ba', '#ff69b4', '#ff1493', '#ffb6c1', '#ff6b9d', '#ff4081'];
+            const heartTypes = ['❤️', '💖', '💗', '💓', '💞', '💕', '🧡', '💛', '💚', '💙', '💜'];
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('falling-heart');
+                
+                heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                heart.style.animationDelay = (Math.random() * 8) + 's';
+                heart.style.filter = `brightness(${0.7 + Math.random() * 0.5})`;
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // Create red falling hearts for page 2
+        function createRedHearts() {
+            const container = document.getElementById('redHearts');
+            const heartCount = 70;
+            const heartColors = ['#8b0000', '#b22222', '#dc143c', '#ff6b6b', '#ff8e8e', '#ffb6c1', '#ff5252', '#ffd700', '#ff69b4', '#ff1493'];
+            const heartTypes = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('red-heart');
+                
+                heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 30 + 18) + 'px';
+                heart.style.animationDuration = (Math.random() * 25 + 12) + 's';
+                heart.style.animationDelay = (Math.random() * 12) + 's';
+                heart.style.filter = `drop-shadow(0 0 5px ${heartColors[Math.floor(Math.random() * heartColors.length)]})`;
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // Handle YES button click
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            const response = document.getElementById('yesResponse');
+            response.style.display = 'block';
+            
+            // Animate YES button
+            this.style.animation = 'yesGlow 0.5s infinite alternate';
+            this.style.transform = 'scale(1.3) rotate(360deg)';
+            this.style.background = 'linear-gradient(45deg, #66BB6A, #81C784, #A5D6A7, #C8E6C9)';
+            this.innerHTML = '<i class="fas fa-heart"></i> THANK YOU PANDA! <i class="fas fa-heart"></i>';
+            
+            // Disable both buttons
+            this.disabled = true;
+            document.getElementById('noBtn').disabled = true;
+            
+            // Animate flowers with explosion effect
+            const flowers = document.querySelectorAll('.bouquet-flower');
+            flowers.forEach((flower, index) => {
+                setTimeout(() => {
+                    flower.style.transform = `translate(-50%, -50%) scale(2) rotate(${720 + index * 30}deg)`;
+                    flower.style.opacity = '0';
+                    flower.style.filter = 'blur(5px)';
+                }, index * 80);
+            });
+            
+            // Animate center heart
+            const centerHeart = document.querySelector('.center-heart');
+            centerHeart.style.animation = 'heartBeat 0.3s infinite, centerSpin 2s linear infinite';
+            
+            // Switch to page 2 after delay
+            setTimeout(() => {
+                document.getElementById('page1').classList.remove('active');
+                document.getElementById('page2').classList.add('active');
+                createRedHearts();
+                createGallery();
+                
+                // Add celebration animation to page 2
+                const celebrationText = document.querySelector('.celebration-text');
+                celebrationText.style.animation = 'celebrationTextGlow 0.5s infinite alternate, celebrationBounce 1s ease-in-out infinite';
+            }, 3000);
+        });
+
+        // Handle NO button click
+        const noMessages = [
+            "Sure ka?",
+            "Pagsure uy?",
+            "Tarong ba",
+            "Tinuod jud?",
+            "Na, Ikaw bahala",
+            "Last najud ni",
+            "Diko Sugot",
+        ];
+        
+        let noClickCount = 0;
+        let yesBtn = document.getElementById('yesBtn');
+        
+        document.getElementById('noBtn').addEventListener('click', function() {
+            if (noClickCount < noMessages.length) {
+                // Change NO button text
+                this.textContent = noMessages[noClickCount];
+                noClickCount++;
+                
+                // Make YES button bigger
+                const currentScale = 1 + (noClickCount * 0.3);
+                yesBtn.style.transform = `scale(${currentScale})`;
+                
+                // Add shake animation to NO button
+                this.style.animation = 'shake 0.5s ease';
+                
+                // Make flowers dance
+                const flowers = document.querySelectorAll('.bouquet-flower');
+                flowers.forEach((flower, index) => {
+                    setTimeout(() => {
+                        flower.style.animation = `shake 0.5s ease ${index * 0.1}s`;
+                        setTimeout(() => {
+                            flower.style.animation = '';
+                        }, 500);
+                    }, index * 50);
+                });
+                
+                // Animate center heart
+                const centerHeart = document.querySelector('.center-heart');
+                centerHeart.style.animation = 'heartBeat 0.3s infinite, centerSpin 1s linear';
+                
+                // Last chance - becomes YES
+                if (noClickCount === noMessages.length) {
+                    setTimeout(() => {
+                        this.textContent = "YES I KNEW IT!";
+                        this.classList.remove('no-btn');
+                        this.classList.add('yes-btn');
+                        this.style.background = 'linear-gradient(45deg, #66BB6A, #81C784)';
+                        this.style.border = '6px solid #A5D6A7';
+                        this.style.animation = 'yesGlow 0.5s infinite alternate, yesFloat 2s ease-in-out infinite';
+                        
+                        this.onclick = function() {
+                            document.getElementById('yesBtn').click();
+                        };
+                    }, 1000);
+                }
+            }
+        });
+
+        // ===== PAGE 2 FUNCTIONS =====
+        
+        // Create 3x3 gallery grid
+        function createGallery() {
+            const gallery = document.getElementById('heartGallery');
+            gallery.innerHTML = '';
+            
+            // Use only first 9 images for 3x3 grid
+            const galleryImages = imageData.slice(0, 9);
+            
+            galleryImages.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.title}" onerror="this.classList.add('error')">
+                    <div class="gallery-fallback">💖</div>
+                    <div class="gallery-number">${item.number}</div>
+                `;
+                
+                galleryItem.addEventListener('click', () => {
+                    openHeartModal(item);
+                });
+                
+                // Add hover sound effect
+                galleryItem.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.15) rotate(5deg)';
+                });
+                
+                galleryItem.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+                
+                gallery.appendChild(galleryItem);
+            });
+        }
+
+        // Open heart modal with message
+        function openHeartModal(item) {
+            const modal = document.getElementById('heartModal');
+            const modalImage = document.getElementById('heartModalImage');
+            const modalTitle = document.getElementById('heartModalTitle');
+            const modalContent = document.getElementById('heartModalContent');
+            const modalNumber = document.getElementById('heartModalNumber');
+            
+            modalImage.src = item.src;
+            modalImage.onerror = function() {
+                this.style.display = 'none';
+            };
+            modalTitle.textContent = item.title;
+            modalContent.textContent = item.message;
+            modalNumber.textContent = item.number;
+            modal.style.display = 'flex';
+            
+            // Add pulsing animation to modal
+            modal.style.animation = 'modalFadeIn 0.4s ease, modalFloat 0.5s ease-in-out infinite';
+        }
+
+        // Close heart modal
+        document.getElementById('closeHeartModal').addEventListener('click', () => {
+            const modal = document.getElementById('heartModal');
+            modal.style.animation = 'modalFadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.style.animation = '';
+            }, 300);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('heartModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('heartModal')) {
+                const modal = document.getElementById('heartModal');
+                modal.style.animation = 'modalFadeOut 0.3s ease forwards';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.style.animation = '';
+                }, 300);
+            }
+        });
+
+        // Add fade out animation
+        const modalFadeOut = document.createElement('style');
+        modalFadeOut.innerHTML = `
+            @keyframes modalFadeOut {
+                from { opacity: 1; backdrop-filter: blur(10px); }
+                to { opacity: 0; backdrop-filter: blur(0px); }
+            }
+            
+            @keyframes colorShift {
+                0% { color: #ff1493; }
+                50% { color: #ff69b4; }
+                100% { color: #ff91ba; }
+            }
+            
+            @keyframes sectionTitleFloat {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                25% { transform: translateY(-10px) rotate(-2deg); }
+                75% { transform: translateY(-10px) rotate(2deg); }
+            }
+        `;
+        document.head.appendChild(modalFadeOut);
+
+        // Back button functionality
+        document.getElementById('backBtn').addEventListener('click', () => {
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page1').classList.add('active');
+            
+            // Reset flowers to original state
+            const flowers = document.querySelectorAll('.bouquet-flower');
+            flowers.forEach(flower => {
+                flower.style.transform = '';
+                flower.style.opacity = '';
+                flower.style.filter = '';
+                flower.style.animation = 'flowerBloom 1s ease-out';
+            });
+            
+            // Reset center heart
+            const centerHeart = document.querySelector('.center-heart');
+            centerHeart.style.animation = 'heartBeat 1.5s infinite, centerSpin 20s linear infinite';
+        });
+
+        // ===== INITIALIZATION =====
+        window.addEventListener('load', function() {
+            createFallingHearts();
+            
+            // Add interactive effects to flowers
+            const flowers = document.querySelectorAll('.bouquet-flower');
+            flowers.forEach((flower, index) => {
+                flower.style.animationDelay = `${index * 0.1}s`;
+                
+                flower.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '100';
+                });
+                
+                flower.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '2';
+                });
+                
+                // Add click effect
+                flower.addEventListener('click', function() {
+                    this.style.animation = 'flowerHover 0.5s ease-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+            
+            // Add continuous animations
+            setInterval(() => {
+                const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+                randomFlower.style.animation = 'numberFloat 1s ease-in-out';
+                setTimeout(() => {
+                    randomFlower.style.animation = '';
+                }, 1000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
